@@ -15,10 +15,13 @@
             <form onsubmit="handleSubmit(event)">
                 Name<br>
                 <input type="text" id="nameField" name="nameField" placeholder="Enter your name"><br>
+                <label id="nameError" class="error"></label>
                 Email<br>
                 <input type="text" id="emailField" name="emailField" placeholder="Enter email"><br>
+                <label id="emailError" class="error"></label>
                 Mobile number<br>
                 <input type="number" id="phoneField" name="phoneField" placeholder="Enter your phone number"><br>
+                <label id="phoneError" class="error"></label>
                 State<br>
                 <select id="stateField">
                     <option value="default">Select state</option>
@@ -26,6 +29,7 @@
                     <option value="Kashmir">Kashmir</option>
                     <option value="Bihar">Bihar</option>                    
                 </select><br>
+                <label id="stateError" class="error"></label>
                 <input type="submit" name="submit" id="submit">
                 
             </form>

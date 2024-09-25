@@ -12,7 +12,37 @@ const nameRegex = /^[A-Za-z\s]+$/;
 const phoneRegex = /^[0-9]{10}$/;
 const emailRegex = /[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}/;
 let editIndex = null;
+let isError=false
 
+const nameField = document.getElementById('nameField');
+const emailField = document.getElementById('emailField');
+const phoneField = document.getElementById('phoneField');
+const stateField = document.getElementById('stateField');
+
+nameField.addEventListener('change',(e)=>{    
+    if(!nameRegex.test(e.target.value))
+        errorResponse("Should contain letters only.",'nameError')
+    else
+        hideResponse('nameError')
+})
+emailField.addEventListener('change',(e)=>{    
+    if(!emailRegex.test(e.target.value))
+        errorResponse("Invalid email",'emailError')  
+    else
+        hideResponse('emailError')
+})
+phoneField.addEventListener('change',(e)=>{    
+    if(!phoneRegex.test(e.target.value))
+        errorResponse("Number must be 10 digits.",'phoneError')
+    else
+        hideResponse('phoneError')  
+})
+stateField.addEventListener('change',(e)=>{    
+    if (e.target.value === "default")
+        errorResponse("Please select a valid state.",'stateError')
+    else
+        hideResponse('stateError')  
+})
 // Handle form submission
 function handleSubmit(e) {
     e.preventDefault();
@@ -22,25 +52,30 @@ function handleSubmit(e) {
     const phone = document.getElementById('phoneField').value;
     const state = document.getElementById('stateField').value;
 
-    if (!nameRegex.test(name)) {
-    alert("Invalid name. Should contain letters only.");
-    return;
-    }
+    // if (!nameRegex.test(name)) {
+    // errorResponse("Invalid name. Should contain letters only","nameError")
+    // // alert("Invalid name. Should contain letters only.");
+    // return;
+    // }
 
-    if (!emailRegex.test(email)) {
-    alert("Invalid email");
-    return;
-    }
+    // if (!emailRegex.test(email)) {
+    // alert("Invalid email");
+    // return;
+    // }
 
-    if (!phoneRegex.test(phone)) {
-    alert("Invalid phone number. Must be 10 digits.");
-    return;
-    }
+    // if (!phoneRegex.test(phone)) {
+    // alert("Invalid phone number. Must be 10 digits.");
+    // return;
+    // }
 
-    if (state === "default") {
-    alert("Invalid state selection. Please select a valid state.");
-    return;
-    }
+    // if (state === "default") {
+    // alert("Invalid state selection. Please select a valid state.");
+    // return;
+    // }
+   if(document.querySelectorAll('.error[style="display: block;"]').length>0||name==""||email==""||phone==""||state=="default"){
+        alert("Invalid input")
+        return
+   }
 
     const confirmSubmission = confirm("Are you sure you want to submit?");
 
@@ -93,7 +128,7 @@ function populateTable(data) {
     //     })
     // })
     // tableBody.appendChild(row)
-    
+
     data.forEach((user, index) => {
     const row = document.createElement('tr');
     // console.log(user.name)
@@ -161,3 +196,15 @@ function handleUpdate() {
     document.getElementById('update').style.display = 'none';
     }
 }
+
+
+function errorResponse(message, id) {
+    const errorMessage = document.querySelector(`#${id}`);
+    errorMessage.style.display = 'block';
+    errorMessage.textContent = message;
+  }
+
+  function hideResponse(id) {
+    const errorMessage = document.querySelector(`#${id}`);
+    errorMessage.style.display = 'none';
+  }

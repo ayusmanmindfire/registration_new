@@ -73,3 +73,8 @@ th, td {
     text-align: start;
     box-sizing: border-box;
 }
+.error{
+    display: none;
+    color: red;
+    font-size: small;
+}
