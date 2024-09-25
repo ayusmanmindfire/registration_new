@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <!-- form div -->
+        <div id="formDiv">
+            <h2>Registration Form</h2>
+            <form onsubmit="handleSubmit(event)">
+                Name<br>
+                <input type="text" id="nameField" name="nameField" placeholder="Enter your name"><br>
+                Email<br>
+                <input type="text" id="emailField" name="emailField" placeholder="Enter email"><br>
+                Mobile number<br>
+                <input type="number" id="phoneField" name="phoneField" placeholder="Enter your phone number"><br>
+                State<br>
+                <select id="stateField">
+                    <option value="default">Select state</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Kashmir">Kashmir</option>
+                    <option value="Bihar">Bihar</option>                    
+                </select><br>
+                <input type="submit" name="submit" id="submit">
+                
+            </form>
+            <button name="update" id="update" value="update" onclick="handleUpdate(event)">Update</button>
+            
+        </div>
+        <!-- table div -->
+        <div id="tableDiv">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>State</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>                
+                <tbody></tbody>               
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
