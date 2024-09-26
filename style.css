@@ -10,20 +10,21 @@ html,body{
 
 .container{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin: 50px;
     padding: 50px;
     background-color: aliceblue;
     box-shadow: 0 0 10px rgba(9, 9, 9, 0.1);
     border: 5px solid rgb(210, 206, 230);
     border-radius: 5px;
+    gap: 30px;
 }
 h2{
     margin: 10px;
 }
 #edit,#delete{
     height: 20px;
-    width:60px;
+    width:100%;
     margin:2px;
     border: 2px solid rgb(102, 90, 155);
     border-radius: 8px;
@@ -33,7 +34,10 @@ h2{
 #formDiv{
     border: 2px solid rgb(210, 206, 230);
     border-radius: 8px;
+    width: 100%;
     padding: 10px;
+    /* margin-right: 30px;
+    margin-left: 30px; */
 }
 
 #nameField,#emailField,#phoneField,#stateField{
@@ -62,6 +66,10 @@ h2{
     display:none;
 }
 
+#tableDiv{
+    width: 100%;
+    overflow-x:auto;
+}
 table {
     border-collapse: collapse;
     width: 100%;
@@ -70,6 +78,7 @@ table {
 th, td {
     border: 1px solid rgb(163, 163, 251);    
     padding: 10px;
+    width:100%;
     text-align: start;
     box-sizing: border-box;
 }
@@ -77,4 +86,30 @@ th, td {
     display: none;
     color: red;
     font-size: small;
+}
+
+@media (max-width:1000px){
+    .container{
+        flex-direction: column;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    #formDiv{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    h2{
+        display: flex;
+        justify-content: center;
+    }
+    /* th,td{
+        padding: 8px
+    } */
+}
+
+@media (max-width:600px){
+    #nameField, #emailField, #phoneField, #stateField,#submit, #update{
+        padding: 8px;
+    }
 }
